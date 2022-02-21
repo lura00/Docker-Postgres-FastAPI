@@ -1,0 +1,1 @@
+CREATE TABLE store (id VARCHAR, name VARCHAR);
