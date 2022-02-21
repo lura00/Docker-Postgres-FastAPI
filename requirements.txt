@@ -1,5 +1,6 @@
 docker
 python
 pytest
+pycodestyle
 fastapi[all]
 postgres
