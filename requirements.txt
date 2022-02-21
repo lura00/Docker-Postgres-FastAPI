@@ -1,6 +1,9 @@
 docker
-python
 pytest
 pycodestyle
 fastapi[all]
+uvicorn 
 postgres
+ormar
+asyncpg
+psycopg2

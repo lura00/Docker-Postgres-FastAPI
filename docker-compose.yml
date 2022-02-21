@@ -1,15 +1,39 @@
 # specify what version to use
-
+version: '3.8'
 # Add services "containers and specify what they should do"
+services:
+  web:
+    build: .
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; uvicorn app.main:app --host 0.0.0.0'
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    environment:
+      - DATABASE_URL=postgresql://lura:solstad@db:5432/bbdb
+    depends_on:
+      - db
 
-# Add <port on localhost>:<add port on container>
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_USER=lura
+      - POSTGRES_PASSWORD=solstad
+      - POSTGRES_DB=bbdb
+volumes:
+  postgres_data:
+    # Add <port on localhost>:<add port on container>
 
-# Add env-variables
+    # Add env-variables
 
-# Add a postgres container
+    # Add a postgres container
 
-# Use default from docker-hub
+    # Use default from docker-hub
 
-# Add volumes, where all data will be stored in the container, default from docker-hub tutorial
+    # Add volumes, where all data will be stored in the container, default from docker-hub tutorial
 
 
