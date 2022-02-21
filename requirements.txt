@@ -1,0 +1,5 @@
+docker
+python
+pytest
+fastapi[all]
+postgres

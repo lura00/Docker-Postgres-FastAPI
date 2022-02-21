@@ -1,0 +1,22 @@
+breakingBad job:
+  image: python:3.9.7
+  rules:
+    - if: $CI_PIPELINE != "schedule"
+  script: 
+    - python --version
+
+run tests:
+  image: $CI_REGISTRY_IMAGE
+  rulse:
+    - if: $CI_PIPELINE != "schedule"
+build image:
+  image: docker
+  services:
+    - docker:dind
+  rules:
+    - if: $CI_PIPELINE != "schedule"
+  script:
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --passwor-stdin
+    - docker build -t $CI_REGISTRY_IMAGE .
+    - echo $CI_REGISTRY_IMAGE
+    - docker push $CI_REGISTRY_IMAGE

@@ -1,0 +1,15 @@
+# specify what version to use
+
+# Add services "containers and specify what they should do"
+
+# Add <port on localhost>:<add port on container>
+
+# Add env-variables
+
+# Add a postgres container
+
+# Use default from docker-hub
+
+# Add volumes, where all data will be stored in the container, default from docker-hub tutorial
+
+
