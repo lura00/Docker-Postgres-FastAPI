@@ -7,8 +7,9 @@ breakingBad job:
 
 run tests:
   image: $CI_REGISTRY_IMAGE
-  rulse:
-    - if: $CI_PIPELINE != "schedule"
+  script:
+    - echo "hello world"
+  
 build image:
   image: docker
   services:
